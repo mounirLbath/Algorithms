@@ -20,5 +20,6 @@ int main()
         temp = temp*temp;
         n = n>>1;   // right shift n by 1 to process the other bits
     }
+    // result = a^n
     cout << result;
 }
