@@ -1,3 +1,3 @@
-# Fast Exponentiation
+# Algorithms
 
-Fast exponentiation in O(log(N)), implemented to compute Fibonacci sequence with matrix multiplication.
+A list of useful algorithms
