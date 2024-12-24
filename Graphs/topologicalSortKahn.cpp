@@ -3,20 +3,20 @@ using namespace std;
 
 // using Kahn's algorithm
 
-vector<int> lab[1001];
-int dEntrant[1001];
+vector<int> graph[1001];
+int dIn[1001];
 vector<int> result;
 void searchFrom(int v)
 {
     result.push_back(v);
-    dEntrant[v] = -1; // vu
-    for(int i : lab[v])
+    dIn[v] = -1; // vu
+    for(int i : graph[v])
     {
-        dEntrant[i]--;
+        dIn[i]--;
     }
-    for(int i : lab[v])
+    for(int i : graph[v])
     {
-        if(dEntrant[i] == 0)
+        if(dIn[i] == 0)
         {
             searchFrom(i);
         }
@@ -31,12 +31,12 @@ int main()
     {
         int a, b;
         cin >> a >> b;
-        lab[a].push_back(b);
-        dEntrant[b]++;
+        graph[a].push_back(b);
+        dIn[b]++;
     }
     for(int i = 1; i <= N; ++i)
     {
-        if(dEntrant[i] == 0)
+        if(dIn[i] == 0)
         {
             searchFrom(i);
         }
