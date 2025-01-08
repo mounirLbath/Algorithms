@@ -15,17 +15,11 @@ struct heap
         while(j > 0)
         {
             if(2*j+1 <= size && values[j] < values[2*j+1])
-            {
                 swap(values[j], values[2*j+1]);
-            }
             else if(values[j] < values[2*j])
-            {
                 swap(values[j], values[2*j]);
-            }
             else
-            {
-                return;
-            }            
+                return;         
             j /= 2;
         }
     }
@@ -54,26 +48,18 @@ struct heap
 
         while(j <= size)
         {
-            if(2*j > size)
-                return m;
-            else if(2*j+1 > size)
+            int indMax = j;
+            for(int k = 2*j; k <= 2*j+1; k++)
+                if(k <= size && values[k] > values[indMax])
+                    indMax = k;
+            
+            if(indMax != j)
             {
-                if(values[j] < values[2*j])
-                    swap(values[j], values[2*j]);
-                return m;
+                swap(values[j], values[indMax]);
+                j = indMax;
             }
             else
-            {
-                int indMax = values[2*j] > values[2*j+1] ? 2*j : 2*j+1;
-                if(values[j] < values[indMax])
-                {
-                    swap(values[j], values[indMax]);
-                    j = indMax;
-                }
-                else
-                    return m;
-            }
-            
+                return m;
         }
         return m;
     }
