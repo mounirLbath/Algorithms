@@ -10,7 +10,7 @@ struct heap
     {
         size++;
         values.push_back(newValue);
-        int j = values.size()-1;
+        int j = size;
         j/=2;
         while(j > 0)
         {
