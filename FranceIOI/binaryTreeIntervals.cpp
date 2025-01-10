@@ -2,6 +2,7 @@
 using namespace std;
 
 // solves problem https://www.france-ioi.org/algo/task.php?idChapter=537&iOrder=5
+// going down 
 // binary tree to perform efficiently 2 tasks on a vector of length N:
 // shift values in the interval [L,R] by s in O(log(N)^2); read the value at index K in O(log(N))
 // 
