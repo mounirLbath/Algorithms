@@ -34,8 +34,10 @@ int main()
     {
         tie(d, curr) = pq.top();
         pq.pop();
-        
         d = -d;
+
+        if(d > dist[curr])
+            continue;
         cout << d << ' ' << curr << '\n';
 
         for(auto x : graph[curr])
