@@ -5,7 +5,6 @@ using namespace std;
 
 vector<pair<int, int>> graph[1001]; // adjency list with pairs (edgeEnd, weight)
 int dist[1001]; //distance to s node
-bool seen[1001];
 int INF = 10000001;
 
 int main()
@@ -35,9 +34,6 @@ int main()
     {
         tie(d, curr) = pq.top();
         pq.pop();
-        if(seen[curr])
-            continue;
-        seen[curr] = true;
         
         d = -d;
         cout << d << ' ' << curr << '\n';
@@ -51,5 +47,4 @@ int main()
             }
         }
     }
-
 }
