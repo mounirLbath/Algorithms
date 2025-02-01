@@ -1,17 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Djikstra algorithm
+// Djikstra algorithm without priority queue in O(N^2)
 
 vector<pair<int, int>> graph[1001]; // adjency list with pairs (edgeEnd, weight)
+const int NO_NODE = -1;
+int seen[1001];
 int dist[1001]; //distance to s node
 int INF = 10000001;
+// number of nodes, number of edges, start node
+int N;
+int E;
+int s;
+
+int findNext()
+{
+    int res = NO_NODE;
+    int minDist = INF;
+    for(int i = 1; i <= N; ++i)
+    {
+        if(!seen[i] && dist[i] < minDist)
+        {
+            minDist = dist[i];
+            res = i;
+        }
+    }
+    return res;
+}
 
 int main()
 {
-    int N, E, s;
-    cin >> N >> E >> s; // number of nodes, number of edges, start node
-
+    
+    cin >> N >> E >> s; 
     int a,b,w;
     for(int i = 0; i < E; ++i)
     {
@@ -26,27 +46,22 @@ int main()
     }
     dist[s] = 0;
 
-    priority_queue<pair<int,int>> pq; // stores pairs (-dist, node) of nodes to explore
-    pq.push(make_pair(0, s));
-
     int curr, d;
-    while(!pq.empty())
+    while(true)
     {
-        tie(d, curr) = pq.top();
-        pq.pop();
-        d = -d;
+        curr = findNext();
 
-        if(d > dist[curr])
-            continue;
+        if(curr == NO_NODE)
+            break;
+
+        d = dist[curr];
+        seen[curr] = true;
+
         cout << d << ' ' << curr << '\n';
 
         for(auto x : graph[curr])
         {
-            if(dist[x.first] > d + x.second)
-            {
-                dist[x.first] = d + x.second;
-                pq.push(make_pair(-dist[x.first], x.first));
-            }
+            dist[x.first] = min(dist[x.first],d + x.second);
         }
     }
 }
