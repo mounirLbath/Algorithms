@@ -58,11 +58,11 @@ int main()
         graph[b].push_back(make_pair(a, w));
     }
 
-    for(int i = 0; i < 2*IND0; i++)
-    {
+    for(int i = 0; i < 2*IND0; ++i)
         distTree[i] = INF;
+
+    for(int i = 1; i<=N; ++i)
         finalDist[i] = INF;
-    }
     
     modify(s,0);
     while(minDist()<INF)
