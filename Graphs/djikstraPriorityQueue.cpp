@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Djikstra algorithm
+// Djikstra algorithm in O(Elog(E)) with priority queue
 
 vector<pair<int, int>> graph[1001]; // adjency list with pairs (edgeEnd, weight)
 int dist[1001]; //distance to s node

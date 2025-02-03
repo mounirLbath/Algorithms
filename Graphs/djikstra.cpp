@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Djikstra algorithm without priority queue in O(N^2)
+// Djikstra algorithm without priority queue in O(V^2)
 
 vector<pair<int, int>> graph[1001]; // adjency list with pairs (edgeEnd, weight)
 const int NO_NODE = -1;
